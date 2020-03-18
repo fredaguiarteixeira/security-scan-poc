@@ -1,0 +1,259 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+#header {
+  background-color: #4b286d;
+  height: 45px;
+}
+
+#header-row {
+  height: 45px;
+}
+
+#body {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#header-control-box > a {
+  background: transparent !important;
+  color: white;
+  text-decoration: none;
+}
+
+#header-control-box > a:hover {
+  text-decoration: underline;
+}
+
+.page-content {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: justify;
+}
+
+.wrapper-box {
+  max-width: 1200px;
+}
+
+.header-button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header-bordered-button {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.padded-element {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.logo {
+  height: 28px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  flex-flow: row wrap;
+  display: flex;
+  min-height: 80px;
+}
+
+.nav-item {
+  display: block;
+  padding: 0px 20px;
+}
+
+.nav-button {
+  height: 80px;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none !important;
+  border-color: transparent;
+  border-radius: 0px;
+  padding: 0px;
+  /* padding: 10px 20px 10px 20px; */
+  background-color: white;
+  color: #2a2c2e !important;
+  border-style: solid;
+  border-width: 4px 0px;
+  border-color: transparent;
+  transition: border-color 0.5s;
+}
+
+.nav-active {
+  border-bottom-color: #4b286d !important;
+}
+
+.nav-button:hover {
+  border-bottom-color: #4b286d;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.active-tab {
+  font-weight: bold;
+  background-color: #f7f7f8;
+}
+
+.small-text-bold {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.modal-container {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.modal-wide-container {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.spinner-position {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+.error-position {
+  width: 30%;
+  margin: auto;
+  display: block;
+}
+
+.color-red {
+  color: red;
+}
+
+ul.disc {
+  list-style-type: disc;
+}
+
+.left-padded-element {
+  padding-left: 17px;
+}
+
+.large-font {
+  font-size: 30px;
+}
+
+.wordwrap {
+  white-space: pre-line !important;
+  word-wrap: break-word;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.padding-horizontal-smallest {
+  padding-right: 0.7em !important;
+  padding-left: 0.7em !important;
+}
+
+.tab {
+  display: inline-block;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: #f7f7f8;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #248700 !important;
+  border: 1px double #248700 !important;
+}
+
+.CalendarDay__selected_span {
+  background: #7bb766 !important;
+  border: 1px double #a7cf99 !important;
+}
+
+.CalendarDay__hovered_span {
+  background: #a7cf99 !important;
+  border: 1px double #7bb766 !important;
+  color: #1c6c00 !important;
+}
+
+.DateInput_input__focused {
+  border-bottom: 2px solid #248700 !important;
+}
+
+.did-submit-input {
+  border: 1px solid #808080 !important;
+}
+
+::placeholder {
+  font-style: italic;
+  color: #d8d8d8;
+  opacity: 1; /* Firefox */
+}
+
+.color-shark,
+.color-shark:focus,
+.color-shark:visited {
+  color: #2a2c2e;
+  text-decoration: underline;
+}
+
+.color-shark:hover {
+  color: #2a2c2e;
+  text-decoration: none;
+}
+
+.TDS_Typography-modules__boldFont___2MqlI {
+  font-weight: 400 !important;
+}
+
+.rt-noData {
+  background: none !important;
+}

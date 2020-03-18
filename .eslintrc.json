@@ -1,0 +1,79 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 150,
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ],
+    "comma-dangle": "off",
+    "linebreak-style": ["error", "unix"],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "next"
+      }
+    ],
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 150
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "react/prefer-stateless-function": "error",
+    "react/no-typos": "error",
+    "react/prop-types": [
+      2,
+      {
+        "skipUndeclared": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
+      }
+    ]
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
+}

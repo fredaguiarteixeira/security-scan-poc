@@ -1,0 +1,30 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-spread",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "actions": "./src/actions",
+          "components": "./src/components",
+          "config": "./src/config",
+          "constants": "./src/constants",
+          "helpers": "./src/helpers",
+          "reducers": "./src/reducers",
+          "selectors": "./src/selectors",
+          "services": "./src/services",
+          "hooks": "./src/hooks"
+        }
+      }
+    ]
+  ]
+}

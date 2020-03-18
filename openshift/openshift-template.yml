@@ -1,0 +1,208 @@
+# Configures the build pipeline dependencies for openshift
+# See: README.md
+
+# Images
+apiVersion: v1
+kind: List
+metadata:
+  name: portalstartertemplate-ui-pipeline
+items:
+  - kind: ImageStream
+    apiVersion: v1
+    metadata:
+      name: portalstartertemplate-ui
+      labels:
+        app: portalstartertemplate-ui
+
+  # Jenkins
+  - apiVersion: v1
+    kind: Template
+    metadata:
+      name: portalstartertemplate-ui-pipeline
+    parameters:
+      - name: BRANCH
+        description: Branch to build from
+        value: ${BRANCH}
+    objects:
+      - apiVersion: v1
+        kind: BuildConfig
+        metadata:
+          name: portalstartertemplate-ui-pipeline
+          labels:
+            app: portalstartertemplate-ui
+        spec:
+          source:
+            type: Git
+            git:
+              uri: ssh://tfs.tsl.telus.com:22/tfs/telus/BT-GIT/_git/CustOM-Starter-Template-UI
+              ref: ${BRANCH}
+            contextDir: ''
+            sourceSecret:
+              name: git-secret
+          triggers:
+            - type: GitHub
+              github:
+                secret: tisk
+          runPolicy: SerialLatestOnly
+          strategy:
+            type: JenkinsPipeline
+            jenkinsPipelineStrategy:
+              jenkinsfilePath: Jenkinsfile
+
+      # BuildConfig
+      - kind: BuildConfig
+        apiVersion: v1
+        metadata:
+          name: portalstartertemplate-ui
+          labels:
+            app: portalstartertemplate-ui
+        spec:
+          completionDeadlineSeconds: 3600
+          source:
+            type: Git
+            git:
+              uri: ssh://tfs.tsl.telus.com:22/tfs/telus/BT-GIT/_git/CustOM-Starter-Template-UI
+              ref: ${BRANCH}
+            contextDir: ''
+            sourceSecret:
+              name: git-secret
+            runPolicy: Parallel
+          strategy:
+            type: Docker
+            dockerStrategy:
+              dockerfilePath: Dockerfile
+              forcePull: true
+          resources:
+            limits:
+              cpu: 500m
+              memory: 768Mi
+          output:
+            to:
+              kind: ImageStreamTag
+              name: portalstartertemplate-ui:latest
+
+  # Deployment template
+  - apiVersion: v1
+    kind: Template
+    metadata:
+      name: portalstartertemplate-ui
+    parameters:
+      - name: VERSION
+        value: ''
+      - name: ENVIRONMENT
+        description: The environment name
+        value: staging
+      - name: DOCKER_REGISTRY
+        description: Docker image to deploy
+      - name: NUM_REPLICAS
+        description: How many replicas of the pod to deploy?
+        value: '1'
+      - name: MAX_REPLICAS
+        description: Limit on number of replicas to create
+        value: '5'
+      - name: BRANCH
+        description: Branch to build from
+        value: ${BRANCH}
+      - name: REDIS_HOST
+        description: Which elasticache server to use
+    objects:
+      # Deployment Config
+      - apiVersion: v1
+        kind: DeploymentConfig
+        metadata:
+          name: portalstartertemplate-${ENVIRONMENT}-ui
+          labels:
+            app: portalstartertemplate-ui
+            version: ${VERSION}
+        spec:
+          revisionHistoryLimit: 3
+          replicas: ${{NUM_REPLICAS}}
+          template:
+            metadata:
+              labels:
+                deploymentconfig: portalstartertemplate-${ENVIRONMENT}-ui
+            spec:
+              containers:
+                - name: portalstartertemplate-ui
+                  image: ${DOCKER_REGISTRY}
+                  # volumeMounts:
+                  # - mountPath: "/usr/src/app/logs"
+                  #   name: portalstartertemplate-vol
+                  imagePullPolicy: Always
+                  env:
+                    - name: NODE_ENV
+                      value: ${ENVIRONMENT}
+                  ports:
+                    - containerPort: 8080
+                  livenessProbe:
+                    tcpSocket:
+                      port: 8080
+                    initialDelaySeconds: 1
+                    timeoutSeconds: 1
+                  readinessProbe:
+                    httpGet:
+                      path: /version
+                      port: 8080
+                      scheme: HTTP
+                    initialDelaySeconds: 5
+                    timeoutSeconds: 5
+                  resources:
+                    requests:
+                      cpu: 200m
+                      memory: 256Mi
+                    limits:
+                      cpu: 200m
+                      memory: 256Mi
+              # volumes:
+              #   - name: portalstartertemplate-vol
+              #     persistentVolumeClaim:
+              #       claimName: portalstartertemplate-claim
+
+      # Service
+      - apiVersion: v1
+        kind: Service
+        metadata:
+          name: portalstartertemplate-${ENVIRONMENT}-ui
+          labels:
+            app: portalstartertemplate-ui
+        spec:
+          ports:
+            - name: ui
+              port: 8080
+              targetPort: 8080
+          selector:
+            deploymentconfig: portalstartertemplate-${ENVIRONMENT}-ui
+      # Route
+      - apiVersion: v1
+        kind: Route
+        metadata:
+          name: portalstartertemplate-${ENVIRONMENT}-ui
+          labels:
+            app: portalstartertemplate-ui
+          annotations:
+            haproxy.router.openshift.io/disable_cookies: 'true'
+        spec:
+          to:
+            kind: Service
+            name: portalstartertemplate-${ENVIRONMENT}-ui
+            weight: 100
+          port:
+            targetPort: 8080
+          tls:
+            termination: edge
+            insecureEdgeTerminationPolicy: Redirect
+      # Scale
+      - apiVersion: autoscaling/v1
+        kind: HorizontalPodAutoscaler
+        metadata:
+          name: portalstartertemplate-${ENVIRONMENT}-ui
+          labels:
+            app: portalstartertemplate-ui
+        spec:
+          scaleTargetRef:
+            apiVersion: v1
+            kind: DeploymentConfig
+            name: portalstartertemplate-${ENVIRONMENT}-ui
+          minReplicas: ${{NUM_REPLICAS}}
+          maxReplicas: ${{MAX_REPLICAS}}
+          targetCPUUtilizationPercentage: 80

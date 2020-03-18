@@ -1,0 +1,121 @@
+@import url('//fast.fonts.net/t/1.css?apiType=css&projectid=20d74cc5-7f7c-49a7-80ae-fa2f389c550d');
+
+@media screen and (max-width: 780px) {
+  h1 {
+    font-size: 24px !important;
+  }
+  .number-detail h4 {
+    display: inline-block;
+    min-width: 150px;
+    max-height: 30px;
+    padding: 15px;
+  }
+  .number-services thead th:nth-child(2) {
+    display: none;
+  }
+  .number-services tbody td:nth-child(2) {
+    display: none;
+  }
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.11;
+  letter-spacing: 0.2px;
+  color: #4b286d;
+}
+
+h2 {
+  font-weight: 500;
+  text-align: left;
+  color: #333;
+  font-size: 24px;
+  color: #4b286d;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+@font-face {
+  font-family: 'tthinregular';
+  src: url('//static.telus.com/common/fonts//56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix');
+  src: url('//static.telus.com/common/fonts//56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix') format('eot'),
+    url('//static.telus.com/common/fonts//50d35bbc-dfd4-48f1-af16-cf058f69421d.woff') format('woff'),
+    url('//static.telus.com/common/fonts//278bef59-6be1-4800-b5ac-1f769ab47430.ttf') format('truetype'),
+    url('//static.telus.com/common/fonts//2e309b1b-08b8-477f-bc9e-7067cf0af0b3.svg#2e309b1b-08b8-477f-bc9e-7067cf0af0b3') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'tthinregular';
+  src: url('//static.telus.com/common/fonts//ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix');
+  src: url('//static.telus.com/common/fonts//ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix') format('eot'),
+    url('//static.telus.com/common/fonts//530dee22-e3c1-4e9f-bf62-c31d510d9656.woff') format('woff'),
+    url('//static.telus.com/common/fonts//688ab72b-4deb-4e15-a088-89166978d469.ttf') format('truetype'),
+    url('//static.telus.com/common/fonts//7816f72f-f47e-4715-8cd7-960e3723846a.svg#7816f72f-f47e-4715-8cd7-960e3723846a') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'tlightregular';
+  src: url('//static.telus.com/common/fonts//ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix');
+  src: url('//static.telus.com/common/fonts//ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix') format('eot'),
+    url('//static.telus.com/common/fonts//530dee22-e3c1-4e9f-bf62-c31d510d9656.woff') format('woff'),
+    url('//static.telus.com/common/fonts//688ab72b-4deb-4e15-a088-89166978d469.ttf') format('truetype'),
+    url('//static.telus.com/common/fonts//7816f72f-f47e-4715-8cd7-960e3723846a.svg#7816f72f-f47e-4715-8cd7-960e3723846a') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'tlightregular';
+  src: url('//static.telus.com/common/fonts//b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix');
+  src: url('//static.telus.com/common/fonts//b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix') format('eot'),
+    url('//static.telus.com/common/fonts//bcf54343-d033-41ee-bbd7-2b77df3fe7ba.woff') format('woff'),
+    url('//static.telus.com/common/fonts//b0ffdcf0-26da-47fd-8485-20e4a40d4b7d.ttf') format('truetype'),
+    url('//static.telus.com/common/fonts//da09f1f1-062a-45af-86e1-2bbdb3dd94f9.svg#da09f1f1-062a-45af-86e1-2bbdb3dd94f9') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'tromanregular';
+  src: url('//static.telus.com/common/fonts//b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix');
+  src: url('//static.telus.com/common/fonts//b7693a83-b861-4aa6-85e0-9ecf676bc4d6.eot?#iefix') format('eot'),
+    url('//static.telus.com/common/fonts//bcf54343-d033-41ee-bbd7-2b77df3fe7ba.woff') format('woff'),
+    url('//static.telus.com/common/fonts//b0ffdcf0-26da-47fd-8485-20e4a40d4b7d.ttf') format('truetype'),
+    url('//static.telus.com/common/fonts//da09f1f1-062a-45af-86e1-2bbdb3dd94f9.svg#da09f1f1-062a-45af-86e1-2bbdb3dd94f9') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo {
+  float: left;
+  width: 16.66667%;
+  max-width: 150px;
+  min-width: 100px;
+  padding: 8px 8px 7px 0px;
+}
+
+body {
+  font-family: 'tthinregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+}
+
+@keyframes spinnerKf {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spinnerKf 2s linear infinite;
+}
+
+.pointer {
+  cursor: pointer;
+}
