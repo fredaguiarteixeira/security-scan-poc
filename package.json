@@ -32,7 +32,7 @@
     "@tds/core-link": "^2.0.9",
     "@tds/core-spinner": "^2.2.2",
     "@tds/core-text": "^1.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.2",
